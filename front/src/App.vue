@@ -13,6 +13,13 @@
   export default {
     data: () => ({
       test: 'test'
-    })
+    }),
+    created() {
+      fetch("http://localhost:8000/api/test")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+    }
   }
 </script>
