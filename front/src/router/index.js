@@ -27,7 +27,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  base: "/front/dist",
+  // base: "/front/dist",
   routes,
 });
 
