@@ -44,7 +44,9 @@ export default {
             this.cruds.find(crud => crud.id === id).color = color
         },
         async del(id) {
-
+            await axios.get('api/cruds')
+            let index = this.cruds.findIndex(crud => crud.id === id)
+            this.cruds.splice(index, 1)
         },
         async create() {
             const { data } = await axios.get('api/cruds/create')

@@ -29,12 +29,11 @@ export default {
     }),
     methods: {
       update(val) {
-          console.log(val);
         this.$emit('update', this.id, val.target.selectedOptions[0].value)
       },
       del() {
           console.log('del');
-        // this.$emit('delete', this.id);
+        this.$emit('delete', this.id);
       }
     },
     computed: {
