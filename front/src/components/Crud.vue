@@ -22,9 +22,10 @@
 
 <script>
 export default {
+    props: ['id', 'color', 'name'],
+
     data: () => ({
-        name: 'test',
-        color: 'green'
+
     }),
     methods: {
       update(val) {
@@ -38,7 +39,7 @@ export default {
     },
     computed: {
       image() {
-        return `assets/img/green.png`;
+        return `assets/img/${this.color}.png`;
       }
     },
     filters: {

@@ -1,14 +1,21 @@
 <template>
   <div class="wrapper">
       <h1>Cruds</h1>
-      <Crud />
-      <Crud />
-      <Crud />
+      <CrudComponent
+        v-for="crud in cruds"
+        v-bind="crud"
+        :key="crud.id"
+        @update="update"
+        @delete="del"
+      ></CrudComponent>
+      <div>
+         <button @click="create">Add</button>
+      </div>
   </div>
 </template>
 
 <script>
-import Crud from '../components/Crud.vue'
+import CrudComponent from '../components/Crud.vue'
 import axiosBase from 'axios'
 const axios = axiosBase.create({
   baseURL: 'http://api.laravel-demiart-cruds/back/public/'
@@ -21,7 +28,7 @@ function Crud({ id, color, name}) {
 }
 
 export default {
-    components: { Crud },
+    components: { CrudComponent },
     data() {
       return {
         cruds: []
@@ -29,8 +36,18 @@ export default {
     },
     methods: {
         async read() {
-            const data = axios.get('api/cruds')
+            const { data } = await axios.get('api/cruds')
             console.log(data);
+            data.forEach(crud => this.cruds.push(new Crud(crud)))
+        },
+        async update(id) {
+
+        },
+        async del(id) {
+
+        },
+        async create() {
+
         }
     },
     created() {
