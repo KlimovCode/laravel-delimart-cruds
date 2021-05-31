@@ -37,17 +37,19 @@ export default {
     methods: {
         async read() {
             const { data } = await axios.get('api/cruds')
-            console.log(data);
             data.forEach(crud => this.cruds.push(new Crud(crud)))
         },
-        async update(id) {
-
+        async update(id, color) {
+            await axios.put(`/api/cruds/${id}`, { color })
+            this.cruds.find(crud => crud.id === id).color = color
         },
         async del(id) {
 
         },
         async create() {
-
+            const { data } = await axios.get('api/cruds/create')
+            console.log(data);
+            this.cruds.push(new Crud(data))
         }
     },
     created() {

@@ -29,8 +29,8 @@ export default {
     }),
     methods: {
       update(val) {
-          console.log('update');
-        // this.$emit('update', this.id, val.target.selectedOptions[0].value);
+          console.log(val);
+        this.$emit('update', this.id, val.target.selectedOptions[0].value)
       },
       del() {
           console.log('del');
